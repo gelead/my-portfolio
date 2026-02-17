@@ -4,12 +4,17 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { SOCIAL_LINKS } from "@/constants";
 
 const navItems = [
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
+
+const primarySocial = SOCIAL_LINKS.filter((link) =>
+  ["github", "linkedin"].includes(link.id),
+);
 
 export function Navbar() {
   const pathname = usePathname();
@@ -20,7 +25,7 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle/60 bg-background/60 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border-subtle/60 bg-background/70 backdrop-blur-md">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="relative flex items-center gap-2">
           <span className="text-sm font-medium uppercase tracking-[0.2em] text-text-muted">
@@ -29,16 +34,30 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-8 text-sm font-medium text-text md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative transition-colors hover:text-accent"
-            >
-              {item.label}
-              <span className="pointer-events-none absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-accent-soft/70 transition-transform duration-200 group-hover:scale-x-100" />
-            </Link>
-          ))}
+          <div className="flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-3 text-xs font-medium text-text-muted">
+            {primarySocial.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-border-subtle/70 bg-background-elevated/70 px-3 py-1 transition hover:border-accent-soft hover:text-accent"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         <button
@@ -88,6 +107,19 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              <div className="mt-2 flex flex-wrap gap-2 text-xs font-medium text-text-muted">
+                {primarySocial.map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full border border-border-subtle/70 bg-background/70 px-3 py-1 transition hover:border-accent-soft hover:text-accent"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

@@ -40,6 +40,7 @@
   --color-background-elevated: var(--background-elevated);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-brand-primary: var(--accent);
   --color-text: var(--text-primary);
   --color-text-muted: var(--text-muted);
   --color-border-subtle: var(--border-subtle);

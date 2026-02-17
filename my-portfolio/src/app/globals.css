@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/*
+  Modern Dark theme tokens
+  - Deep charcoal backgrounds
+  - Electric indigo accents
+  - Crisp slate text
+*/
+:root {
+  /* Core surfaces */
+  --background: #050816; /* deep charcoal */
+  --background-elevated: #0b1120;
+
+  /* Accent + interactive */
+  --accent: #6366f1; /* electric indigo */
+  --accent-soft: #4f46e5;
+
+  /* Typography */
+  --text-primary: #e5e7eb; /* crisp slate */
+  --text-muted: #9ca3af;
+
+  /* Borders & subtle chrome */
+  --border-subtle: rgba(148, 163, 184, 0.35);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #f9fafb;
+    --background-elevated: #ffffff;
+    --accent: #4f46e5;
+    --accent-soft: #6366f1;
+    --text-primary: #020617;
+    --text-muted: #6b7280;
+    --border-subtle: rgba(148, 163, 184, 0.3);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-text: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text-primary);
+}

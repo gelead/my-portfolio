@@ -13,8 +13,9 @@ export default function AboutPage() {
     <div className="bg-white text-black dark:bg-black dark:text-white">
       <section className="mx-auto max-w-[1800px] px-8 pb-16 pt-24 md:px-20 md:pt-32">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
@@ -29,8 +30,9 @@ export default function AboutPage() {
         <div className="grid gap-16 md:grid-cols-2 md:items-start">
           <div className="space-y-16">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-4"
             >
@@ -54,8 +56,9 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-4"
             >
@@ -77,8 +80,9 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="space-y-4"
             >
@@ -103,8 +107,9 @@ export default function AboutPage() {
 
           <div className="sticky top-24">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="rounded-sm border-2 border-black/15 bg-white p-10 text-center dark:border-white/20 dark:bg-black"
             >

@@ -55,6 +55,86 @@ function hexToRgb(hex: string) {
   return { r, g, b };
 }
 
+type TechItem = (typeof TECH)[number];
+
+function ToolboxCard({
+  item,
+  isDark,
+}: {
+  item: TechItem;
+  isDark: boolean;
+}) {
+  const { name, Icon, color } = item;
+
+  const effectiveColor =
+    (name === "Next.js" || name === "Express" || name === "Vercel") && isDark
+      ? "#ffffff"
+      : color;
+
+  const rgb = hexToRgb(effectiveColor);
+  const hoverBg = rgb
+    ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.10)`
+    : "rgba(0,0,0,0.04)";
+  const hoverGlow = rgb
+    ? `0 18px 50px rgba(0,0,0,0.18), 0 0 28px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.30)`
+    : "0 18px 50px rgba(0,0,0,0.18)";
+
+  const isDarkBrand = effectiveColor.toLowerCase() === "#2d3748";
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-30, 30], [10, -10]);
+  const rotateY = useTransform(x, [-30, 30], [-10, 10]);
+
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+    x.set(px * 30);
+    y.set(py * 30);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <div style={{ perspective: 900 }}>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, scale: 0.9 },
+          visible: { opacity: 1, scale: 1 },
+        }}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        whileHover={{
+          y: -10,
+          backgroundColor: hoverBg,
+          boxShadow: hoverGlow,
+          borderColor: effectiveColor,
+        }}
+        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+        className="flex min-h-[160px] flex-col items-center justify-center gap-3 rounded-xl border border-black/10 bg-white/60 px-4 py-6 text-center shadow-[0_10px_40px_rgba(0,0,0,0.10)] backdrop-blur-md dark:border-white/10 dark:bg-white/5"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Icon
+          className={`h-10 w-10 ${
+            isDarkBrand ? "dark:drop-shadow-[0_0_4px_rgba(255,255,255,0.45)]" : ""
+          }`}
+          style={{ color: effectiveColor }}
+          aria-hidden
+        />
+        <span className="text-sm font-semibold text-black/80 dark:text-white/80">
+          {name}
+        </span>
+      </motion.div>
+    </div>
+  );
+}
+
 export function TechStack() {
   const items = TECH;
   const { resolvedTheme } = useTheme();
@@ -66,7 +146,13 @@ export function TechStack() {
 
   return (
     <section className="mx-auto max-w-[1800px] px-8 md:px-20">
-      <div className="mb-8">
+      <motion.div
+        className="mb-8"
+        initial={{ opacity: 0, x: -24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Tech Stack
         </p>
@@ -77,7 +163,7 @@ export function TechStack() {
           A focused set of tools I use to design, build, ship, and scale modern
           web products.
         </p>
-      </div>
+      </motion.div>
 
       <motion.div
         variants={{
@@ -93,74 +179,9 @@ export function TechStack() {
         viewport={{ once: true, amount: 0.3 }}
         className="grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6 lg:grid-cols-6"
       >
-        {items.map((item) => {
-          const { name, Icon, color } = item;
-          const effectiveColor =
-            (name === "Next.js" || name === "Express" || name === "Vercel") && isDark
-              ? "#ffffff"
-              : color;
-          const rgb = hexToRgb(effectiveColor);
-
-          const hoverBg =
-            rgb ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1)` : "rgba(0,0,0,0.04)";
-          const hoverGlow = rgb
-            ? `0 18px 50px rgba(0,0,0,0.18), 0 0 28px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3)`
-            : "0 18px 50px rgba(0,0,0,0.18)";
-
-          const isDarkBrand = effectiveColor.toLowerCase() === "#2d3748";
-
-          const x = useMotionValue(0);
-          const y = useMotionValue(0);
-          const rotateX = useTransform(y, [-30, 30], [10, -10]);
-          const rotateY = useTransform(x, [-30, 30], [-10, 10]);
-
-          const handleMouseMove = (
-            event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-          ) => {
-            const rect = event.currentTarget.getBoundingClientRect();
-            const px = (event.clientX - rect.left) / rect.width - 0.5;
-            const py = (event.clientY - rect.top) / rect.height - 0.5;
-            x.set(px * 30);
-            y.set(py * 30);
-          };
-
-          const handleMouseLeave = () => {
-            x.set(0);
-            y.set(0);
-          };
-
-          return (
-            <motion.div
-              key={name}
-              variants={{
-                hidden: { opacity: 0, scale: 0.9 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              style={{ rotateX, rotateY }}
-              whileHover={{
-                y: -10,
-                backgroundColor: hoverBg,
-                boxShadow: hoverGlow,
-                borderColor: effectiveColor,
-              }}
-              transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="flex min-h-[160px] flex-col items-center justify-center gap-3 rounded-xl border border-white/20 bg-white/5 px-4 py-6 text-center shadow-[0_10px_40px_rgba(0,0,0,0.18)] backdrop-blur-md dark:border-white/10 dark:bg-white/5"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Icon
-                className={`h-10 w-10 ${
-                  isDarkBrand ? "dark:drop-shadow-[0_0_4px_rgba(255,255,255,0.45)]" : ""
-                }`}
-                style={{ color: effectiveColor }}
-                aria-hidden
-              />
-              <span className="text-sm font-semibold text-black/80 dark:text-white/80">
-                {name}
-              </span>
-            </motion.div>
-          );
-        })}
+        {items.map((item) => (
+          <ToolboxCard key={item.name} item={item} isDark={isDark} />
+        ))}
       </motion.div>
     </section>
   );

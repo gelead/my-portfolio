@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 import { sendEmail } from "@/app/actions";
 import { SOCIAL_LINKS } from "@/constants";
 
@@ -39,7 +40,13 @@ export function Contact() {
       className="mx-auto max-w-[1800px] px-8 pb-24 pt-8 md:px-20 md:pb-32"
     >
       <div className="grid gap-12 md:grid-cols-2 md:items-start">
-        <div className="space-y-6">
+        <motion.div
+          className="space-y-6"
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
             Contact
           </p>
@@ -65,7 +72,7 @@ export function Contact() {
               </a>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         <div className="rounded-sm border-2 border-black/15 bg-white p-8 dark:border-white/20 dark:bg-black sm:p-10">
           <form onSubmit={handleSubmit} className="space-y-6">

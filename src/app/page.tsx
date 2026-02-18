@@ -9,13 +9,27 @@ import { TechStack } from "@/components/sections/TechStack";
 export default function Home() {
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
-      <Hero />
-      <Services />
-      <Stats />
-      <Projects />
-      <Experience />
-      <Process />
-      <TechStack />
+      <div className="py-40">
+        <Hero />
+      </div>
+      <div className="py-40">
+        <Services />
+      </div>
+      <div className="py-40">
+        <Stats />
+      </div>
+      <div className="py-40">
+        <Projects />
+      </div>
+      <div className="py-40">
+        <Experience />
+      </div>
+      <div className="py-40">
+        <Process />
+      </div>
+      <div className="py-40">
+        <TechStack />
+      </div>
     </div>
   );
 }

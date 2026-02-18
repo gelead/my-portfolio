@@ -61,11 +61,11 @@ export function TechStack() {
             return (
               <span
                 key={`${name}-${index}`}
-                className="group flex items-center gap-3 whitespace-nowrap rounded-sm border-2 border-black/15 bg-white px-5 py-2.5 text-base font-semibold text-black/70 transition dark:border-white/20 dark:bg-black dark:text-white/70"
+                className="group flex items-center gap-4 whitespace-nowrap rounded-sm border-2 border-black/15 bg-white px-8 py-4 text-xl font-bold text-black/70 transition dark:border-white/20 dark:bg-black dark:text-white/70 sm:text-2xl"
                 style={{ ["--hover-color" as string]: color }}
               >
                 <Icon
-                  className="h-4 w-4 shrink-0 transition-colors group-hover:text-[var(--hover-color)] sm:h-5 sm:w-5"
+                  className="h-7 w-7 shrink-0 transition-colors group-hover:text-[var(--hover-color)] sm:h-8 sm:w-8"
                   aria-hidden
                 />
                 <span className="transition-colors group-hover:text-[var(--hover-color)]">

@@ -73,7 +73,7 @@ export function Services() {
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-sm border-2 border-black bg-black text-white dark:border-white dark:bg-white dark:text-black">
                 <Icon className="h-6 w-6" aria-hidden />
               </div>
-              <h3 className="text-lg font-bold text-black dark:text-white">
+              <h3 className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl">
                 {service.title}
               </h3>
               <p className="mt-3 text-lg text-black/70 dark:text-white/70">

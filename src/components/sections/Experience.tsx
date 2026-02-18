@@ -21,7 +21,7 @@ export function Experience() {
       </div>
 
       <div className="relative">
-        <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-black/30 via-black/15 to-transparent dark:from-white/30 dark:via-white/15 sm:left-5" />
+        <div className="absolute left-4 top-0 h-full w-[4px] bg-black/40 dark:bg-white/40 sm:left-5" />
 
         <ol className="space-y-8">
           {EXPERIENCES.map((exp, index) => {
@@ -45,7 +45,7 @@ export function Experience() {
                 <div className="flex-1 rounded-sm border-2 border-black/15 bg-white p-6 dark:border-white/20 dark:bg-black sm:p-8">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <div>
-                      <h3 className="text-lg font-bold text-black dark:text-white">
+                      <h3 className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl">
                         {exp.company}
                       </h3>
                       <p className="text-base font-medium text-black/70 dark:text-white/70">

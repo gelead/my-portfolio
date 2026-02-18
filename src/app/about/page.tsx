@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { History, Lightbulb, TrendingUp } from "lucide-react";
+import Image from "next/image";
 
+// 1. DATA ARRAYS (These must be inside the file)
 const stats = [
   { id: "experience", label: "Years Experience", value: "4+" },
   { id: "projects", label: "Projects Completed", value: "10+" },
@@ -32,78 +34,80 @@ export default function AboutPage() {
     <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
       <section className="mx-auto max-w-[1800px] px-8 py-20 md:px-20 md:py-28">
         
-        {/* --- TOP SECTION: Story & Image --- */}
-        <div className="grid gap-16 lg:grid-cols-[1fr_0.8fr] items-start mb-24">
-          <div className="space-y-10">
+        {/* TOP SECTION */}
+        <div className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr] items-center mb-32">
+          <div className="space-y-8">
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
-                About Me
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/50 dark:text-white/50">
+                Professional Profile
               </p>
-              <h1 className="mt-4 text-5xl font-extrabold tracking-tight md:text-6xl lg:text-7xl leading-[1.1]">
-                Crafting Digital <br /> 
-                <span className="text-blue-600">Experiences.</span>
+              
+              {/* Scaled down heading */}
+              <h1 className="mt-6 text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl leading-[1.1]">
+                Crafting Digital <br /> Experiences
+                
               </h1>
-              <div className="mt-8 space-y-6 text-lg text-black/70 dark:text-white/70 max-w-2xl">
+              
+              <div className="mt-8 space-y-6 text-base md:text-lg text-black/70 dark:text-white/70 max-w-xl leading-relaxed">
                 <p>
-                  I'm a Full Stack Developer with 4+ years of professional experience, 
-                  specializing in building robust and scalable web applications. My 
-                  approach blends technical precision with a deep understanding of user behavior.
+                  I&apos;m a Full Stack Developer specializing in robust, scalable systems. 
+                  My approach blends technical precision with a deep understanding of user behavior.
                 </p>
               </div>
             </motion.div>
 
-            {/* Stats: Structured Row */}
-            <div className="flex flex-wrap gap-8 md:gap-16 border-t-2 border-black/10 dark:border-white/10 pt-10">
+            {/* Stats Row */}
+            <div className="flex flex-wrap gap-12 border-t border-black/10 dark:border-white/10 pt-10">
               {stats.map((stat) => (
                 <div key={stat.id} className="space-y-1">
-                  <p className="text-4xl font-extrabold tracking-tighter">{stat.value}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest opacity-50">{stat.label}</p>
+                  <p className="text-3xl font-black tracking-tighter">{stat.value}</p>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] opacity-50">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Column: Styled Placeholder Container */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="aspect-[4/5] w-full rounded-sm border-2 border-black/15 bg-gray-50 dark:border-white/20 dark:bg-white/5 flex items-center justify-center"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] opacity-20">Profile Image Holder</span>
-          </motion.div>
+          {/* IMAGE COLUMN */}
+          <div className="relative mx-auto aspect-square w-full max-w-[400px]">
+            <div className="absolute -inset-4 -z-10 rounded-full bg-black/5 blur-3xl dark:bg-white/5" />
+            
+            <div className="relative h-full w-full overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-[#111]">
+              <Image
+                src="/monkey.png"
+                alt="Profile Graphic"
+                fill
+                priority
+                sizes="(max-width: 768px) 300px, 500px"
+                className="object-cover" 
+              />
+            </div>
+          </div>
         </div>
 
-        {/* --- THREE COLUMN PILLARS: Matching Services Grid --- */}
-        <div className="grid gap-6 md:grid-cols-3">
+        {/* PILLARS GRID */}
+        <div className="grid gap-4 md:grid-cols-3">
           {pillars.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
-              <motion.div
+              <div
                 key={pillar.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-sm border-2 border-black/15 bg-white dark:border-white/20 dark:bg-black hover:border-black dark:hover:border-white transition-colors"
+                className="p-10 border border-black/10 dark:border-white/10 bg-transparent hover:border-black dark:hover:border-white transition-all duration-300"
               >
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-sm border-2 border-black bg-black text-white dark:border-white dark:bg-white dark:text-black">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-2xl font-extrabold tracking-tight mb-3">
+                <Icon className="h-6 w-6 mb-6 text-black dark:text-white" />
+                <h3 className="text-lg font-black uppercase tracking-widest mb-4">
                   {pillar.title}
                 </h3>
-                <p className="text-base leading-relaxed text-black/70 dark:text-white/70">
+                <p className="text-sm leading-relaxed opacity-70">
                   {pillar.text}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>
-
       </section>
     </div>
   );

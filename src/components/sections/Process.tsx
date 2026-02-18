@@ -48,14 +48,20 @@ export function Process() {
       id="process"
       className="mx-auto max-w-[1800px] px-8 md:px-20"
     >
-      <div className="mb-10">
+      <motion.div
+        className="mb-10"
+        initial={{ opacity: 0, x: -24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Process
         </p>
         <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           How projects move from idea to launch.
         </h2>
-      </div>
+      </motion.div>
 
       <div ref={ref} className="relative">
         <div className="pointer-events-none absolute inset-x-8 top-12 hidden h-px border-t-2 border-dashed border-black/20 dark:border-white/20 md:block" />

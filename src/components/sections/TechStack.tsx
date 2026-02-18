@@ -4,34 +4,45 @@ import type { IconType } from "react-icons";
 import {
   SiReact,
   SiNextdotjs,
-  SiTypescript,
-  SiNodedotjs,
   SiTailwindcss,
+  SiRedux,
   SiFramer,
+  SiNodedotjs,
+  SiExpress,
   SiPostgresql,
+  SiMongodb,
   SiPrisma,
-  SiVercel,
-  SiAmazonwebservices,
   SiDocker,
-  SiPython,
+  SiGit,
+  SiAmazonwebservices,
+  SiVercel,
+  SiFigma,
 } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const TECH: { name: string; Icon: IconType; color: string }[] = [
+  // Frontend
   { name: "React", Icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "#ffffff" },
-  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
-  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#000000" },
   { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Redux", Icon: SiRedux, color: "#764ABC" },
   { name: "Framer Motion", Icon: SiFramer, color: "#0055FF" },
+
+  // Backend
+  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+  { name: "Express", Icon: SiExpress, color: "#000000" },
   { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
+  { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
   { name: "Prisma", Icon: SiPrisma, color: "#2D3748" },
-  { name: "Vercel", Icon: SiVercel, color: "#ffffff" },
-  { name: "AWS", Icon: SiAmazonwebservices, color: "#FF9900" },
+
+  // Tools
   { name: "Docker", Icon: SiDocker, color: "#2496ED" },
-  { name: "Python", Icon: SiPython, color: "#3776AB" },
+  { name: "Git", Icon: SiGit, color: "#F05032" },
+  { name: "AWS", Icon: SiAmazonwebservices, color: "#FF9900" },
+  { name: "Vercel", Icon: SiVercel, color: "#000000" },
+  { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
 ];
 
 function hexToRgb(hex: string) {
@@ -68,24 +79,64 @@ export function TechStack() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6 lg:grid-cols-6">
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+          },
+        }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6 lg:grid-cols-6"
+      >
         {items.map((item) => {
           const { name, Icon, color } = item;
-          const isMono = name === "Next.js" || name === "Vercel";
-          const effectiveColor = isMono ? (isDark ? "#ffffff" : "#000000") : color;
+          const effectiveColor =
+            (name === "Next.js" || name === "Express" || name === "Vercel") && isDark
+              ? "#ffffff"
+              : color;
           const rgb = hexToRgb(effectiveColor);
 
           const hoverBg =
-            rgb ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.10)` : "transparent";
+            rgb ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1)` : "rgba(0,0,0,0.04)";
           const hoverGlow = rgb
-            ? `0 18px 50px rgba(0,0,0,0.12), 0 0 28px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.28)`
-            : "0 18px 50px rgba(0,0,0,0.12)";
+            ? `0 18px 50px rgba(0,0,0,0.18), 0 0 28px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3)`
+            : "0 18px 50px rgba(0,0,0,0.18)";
 
           const isDarkBrand = effectiveColor.toLowerCase() === "#2d3748";
+
+          const x = useMotionValue(0);
+          const y = useMotionValue(0);
+          const rotateX = useTransform(y, [-30, 30], [10, -10]);
+          const rotateY = useTransform(x, [-30, 30], [-10, 10]);
+
+          const handleMouseMove = (
+            event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+          ) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const px = (event.clientX - rect.left) / rect.width - 0.5;
+            const py = (event.clientY - rect.top) / rect.height - 0.5;
+            x.set(px * 30);
+            y.set(py * 30);
+          };
+
+          const handleMouseLeave = () => {
+            x.set(0);
+            y.set(0);
+          };
 
           return (
             <motion.div
               key={name}
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              style={{ rotateX, rotateY }}
               whileHover={{
                 y: -10,
                 backgroundColor: hoverBg,
@@ -93,7 +144,9 @@ export function TechStack() {
                 borderColor: effectiveColor,
               }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="flex min-h-[140px] flex-col items-center justify-center gap-3 rounded-sm border-2 border-black/15 bg-white px-4 py-6 text-center transition-colors dark:border-white/20 dark:bg-black"
+              className="flex min-h-[160px] flex-col items-center justify-center gap-3 rounded-xl border border-white/20 bg-white/5 px-4 py-6 text-center shadow-[0_10px_40px_rgba(0,0,0,0.18)] backdrop-blur-md dark:border-white/10 dark:bg-white/5"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
             >
               <Icon
                 className={`h-10 w-10 ${
@@ -108,7 +161,7 @@ export function TechStack() {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 }

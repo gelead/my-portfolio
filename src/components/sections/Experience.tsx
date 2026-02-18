@@ -11,14 +11,20 @@ export function Experience() {
       id="experience"
       className="mx-auto max-w-[1800px] px-8 md:px-20"
     >
-      <div className="mb-8">
+      <motion.div
+        className="mb-8"
+        initial={{ opacity: 0, x: -24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <h2 className="text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           Experience
         </h2>
         <p className="mt-2 text-base text-black/70 dark:text-white/70 md:text-lg">
           Roles and teams where I&apos;ve shipped meaningful work.
         </p>
-      </div>
+      </motion.div>
 
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-[4px] bg-black/40 dark:bg-white/40 sm:left-5" />

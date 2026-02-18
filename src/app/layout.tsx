@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,9 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Navbar />
+          <div className="border-b border-black/10 bg-transparent px-0 md:px-0 dark:border-white/20">
+            <ScrollProgress />
+          </div>
           <main>{children}</main>
           <Footer />
         </ThemeProvider>

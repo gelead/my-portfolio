@@ -46,14 +46,20 @@ export function Services() {
       id="services"
       className="mx-auto max-w-[1800px] px-8 md:px-20"
     >
-      <div className="mb-10">
+      <motion.div
+        className="mb-10"
+        initial={{ opacity: 0, x: -24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Services
         </p>
         <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           How I can help.
         </h2>
-      </div>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}

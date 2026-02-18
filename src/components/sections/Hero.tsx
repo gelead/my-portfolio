@@ -43,45 +43,42 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center gap-10 px-4 pb-12 pt-10 sm:px-6 md:flex-row md:items-center md:justify-between md:pt-16 lg:px-8"
+      className="mx-auto flex min-h-[80vh] max-w-[1800px] flex-col items-center gap-12 px-8 pb-16 pt-16 md:flex-row md:items-center md:justify-between md:px-20 md:pt-24"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex-1 space-y-6 text-center md:text-left"
+        className="flex-1 space-y-8 text-center md:text-left"
       >
-        <p className="text-xs font-medium uppercase tracking-[0.35em] text-text-muted">
+        <p className="text-xs font-bold uppercase tracking-[0.35em] text-black/60 dark:text-white/60">
           Portfolio
         </p>
-        <h1 className="text-balance text-4xl font-semibold tracking-tight text-text sm:text-5xl lg:text-6xl">
-          Hi, I&apos;m{" "}
-          <span className="bg-gradient-to-r from-brand-primary to-accent-soft bg-clip-text text-transparent">
-            Gelead
-          </span>
+        <h1 className="text-balance text-6xl font-extrabold tracking-tight text-black dark:text-white sm:text-7xl lg:text-8xl">
+          Hi, I&apos;m <span className="text-black dark:text-white">Gelead</span>
           .
         </h1>
-        <div className="h-7 text-base font-medium text-text-muted sm:text-lg">
-          <span className="mr-1.5 text-text-muted/80">Full Stack Developer &amp;</span>
-          <span className="inline-flex items-center font-semibold text-brand-primary">
+        <div className="min-h-[2rem] text-lg font-medium text-black/70 dark:text-white/70">
+          <span className="mr-1.5">Full Stack Developer &amp;</span>
+          <span className="font-bold text-black dark:text-white">
             {typedTitle}
-            <span className="ml-1 inline-block h-5 w-[1px] animate-pulse bg-brand-primary/80 align-middle" />
+            <span className="ml-1 inline-block h-5 w-[2px] animate-pulse bg-black align-middle dark:bg-white" />
           </span>
         </div>
-        <p className="max-w-xl text-sm leading-relaxed text-text-muted sm:text-base">
+        <p className="max-w-xl text-lg leading-relaxed text-black/70 dark:text-white/70">
           I design and build thoughtful digital experiences with a focus on
           clean interfaces, performance, and maintainable full‑stack systems.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
           <Link
             href="#projects"
-            className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-2.5 text-sm font-semibold text-background shadow-md shadow-brand-primary/30 transition hover:-translate-y-0.5 hover:bg-accent-soft hover:shadow-lg hover:shadow-accent-soft/30"
+            className="inline-flex items-center justify-center rounded-sm bg-black px-10 py-4 text-base font-bold text-white transition hover:opacity-90 dark:bg-white dark:text-black dark:hover:opacity-90"
           >
             View My Work
           </Link>
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full border border-border-subtle bg-background/60 px-6 py-2.5 text-sm font-medium text-text transition hover:border-brand-primary hover:text-brand-primary"
+            className="inline-flex items-center justify-center rounded-sm border-2 border-black bg-transparent px-10 py-4 text-base font-bold text-black transition hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
           >
             Contact Me
           </Link>
@@ -89,24 +86,22 @@ export function Hero() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         className="flex-1"
       >
-        <div className="relative mx-auto h-52 w-52 max-w-[280px] rounded-full border border-border-subtle/70 bg-gradient-to-br from-accent/40 via-background-elevated to-background shadow-[0_18px_60px_rgba(15,23,42,0.65)] backdrop-blur-md sm:h-64 sm:w-64 md:h-72 md:w-72">
-          <div className="pointer-events-none absolute -left-4 top-8 h-16 w-16 rounded-full bg-accent-soft/60 blur-3xl" />
-          <div className="pointer-events-none absolute -right-6 bottom-4 h-20 w-20 rounded-full bg-brand-primary/60 blur-3xl" />
+        <div className="relative mx-auto aspect-square w-64 border-2 border-black dark:border-white sm:w-80 md:w-96">
+          <div className="absolute inset-0 bg-black/5 dark:bg-white/5" />
           <Image
             src="/next.svg"
             alt="Abstract accent graphic"
             fill
             priority
-            className="rounded-full object-contain p-8 opacity-80 mix-blend-screen"
+            className="object-contain p-8 opacity-80 dark:invert"
           />
         </div>
       </motion.div>
     </section>
   );
 }
-

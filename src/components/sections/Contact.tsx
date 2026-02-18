@@ -36,48 +36,43 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="mx-auto max-w-5xl px-4 pb-20 pt-4 sm:px-6 lg:px-8"
+      className="mx-auto max-w-[1800px] px-8 pb-24 pt-8 md:px-20 md:pb-32"
     >
-      <div className="grid gap-10 md:grid-cols-2 md:items-start">
-        {/* Left column: intro + social */}
-        <div className="space-y-4">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-text-muted">
+      <div className="grid gap-12 md:grid-cols-2 md:items-start">
+        <div className="space-y-6">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
             Contact
           </p>
-          <h2 className="text-balance text-2xl font-semibold tracking-tight text-text sm:text-3xl">
+          <h2 className="text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
             Let&apos;s connect.
           </h2>
-          <p className="text-sm text-text-muted sm:text-base">
+          <p className="max-w-md text-lg leading-relaxed text-black/70 dark:text-white/70">
             Whether you&apos;re exploring a new project, looking for a
             full‑stack partner, or just want to say hi, I&apos;m always open to
             thoughtful conversations about design and engineering.
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-4">
             {primarySocial.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border-subtle/70 bg-background-elevated/60 px-4 py-2 text-xs font-medium text-text-muted transition hover:border-accent-soft hover:text-accent"
+                className="inline-flex items-center gap-2 rounded-sm border-2 border-black bg-white px-6 py-3 text-base font-bold text-black transition hover:bg-black hover:text-white dark:border-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-background/70 text-[11px] font-semibold uppercase text-text">
-                  {link.label.charAt(0)}
-                </span>
-                <span>{link.label}</span>
+                {link.label}
               </a>
             ))}
           </div>
         </div>
 
-        {/* Right column: form */}
-        <div className="rounded-2xl border border-border-subtle/70 bg-background-elevated/60 p-5 backdrop-blur-md sm:p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-1.5">
+        <div className="rounded-sm border-2 border-black/15 bg-white p-8 dark:border-white/20 dark:bg-black sm:p-10">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
               <label
                 htmlFor="name"
-                className="text-xs font-medium text-text sm:text-sm"
+                className="text-sm font-bold text-black dark:text-white"
               >
                 Name
               </label>
@@ -85,15 +80,15 @@ export function Contact() {
                 id="name"
                 name="name"
                 required
-                className="w-full rounded-lg border border-border-subtle/70 bg-background/60 px-3 py-2 text-sm text-text outline-none ring-0 transition placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent"
+                className="w-full rounded-sm border-2 border-black/15 bg-white px-4 py-3 text-lg text-black outline-none transition placeholder:text-black/40 focus:border-black dark:border-white/20 dark:bg-black dark:text-white dark:placeholder:text-white/40 dark:focus:border-white"
                 placeholder="Your name"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="text-xs font-medium text-text sm:text-sm"
+                className="text-sm font-bold text-black dark:text-white"
               >
                 Email
               </label>
@@ -102,15 +97,15 @@ export function Contact() {
                 name="email"
                 type="email"
                 required
-                className="w-full rounded-lg border border-border-subtle/70 bg-background/60 px-3 py-2 text-sm text-text outline-none ring-0 transition placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent"
+                className="w-full rounded-sm border-2 border-black/15 bg-white px-4 py-3 text-lg text-black outline-none transition placeholder:text-black/40 focus:border-black dark:border-white/20 dark:bg-black dark:text-white dark:placeholder:text-white/40 dark:focus:border-white"
                 placeholder="you@example.com"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label
                 htmlFor="message"
-                className="text-xs font-medium text-text sm:text-sm"
+                className="text-sm font-bold text-black dark:text-white"
               >
                 Message
               </label>
@@ -119,28 +114,28 @@ export function Contact() {
                 name="message"
                 rows={4}
                 required
-                className="w-full resize-none rounded-lg border border-border-subtle/70 bg-background/60 px-3 py-2 text-sm text-text outline-none ring-0 transition placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent"
+                className="w-full resize-none rounded-sm border-2 border-black/15 bg-white px-4 py-3 text-lg text-black outline-none transition placeholder:text-black/40 focus:border-black dark:border-white/20 dark:bg-black dark:text-white dark:placeholder:text-white/40 dark:focus:border-white"
                 placeholder="Tell me a bit about what you have in mind..."
               />
             </div>
 
-            <div className="flex items-center justify-between gap-3 pt-1">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="inline-flex min-w-[120px] items-center justify-center rounded-full bg-brand-primary px-5 py-2 text-xs font-semibold text-background shadow-md shadow-brand-primary/30 transition hover:-translate-y-0.5 hover:bg-accent-soft hover:shadow-lg hover:shadow-accent-soft/30 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex min-w-[180px] items-center justify-center rounded-sm bg-black px-10 py-4 text-base font-bold text-white transition hover:opacity-90 disabled:opacity-60 dark:bg-white dark:text-black dark:hover:opacity-90"
               >
                 {status === "loading" ? "Sending..." : "Send Message"}
               </button>
 
-              <div className="min-h-[1.25rem] text-xs">
+              <div className="min-h-[1.5rem] text-sm">
                 {status === "success" && (
-                  <span className="text-[11px] font-medium text-emerald-400">
+                  <span className="font-medium text-black dark:text-white">
                     Success! I&apos;ve received your message.
                   </span>
                 )}
                 {status === "error" && (
-                  <span className="text-[11px] font-medium text-red-400">
+                  <span className="font-medium text-black/70 dark:text-white/70">
                     Something went wrong. Please try again.
                   </span>
                 )}

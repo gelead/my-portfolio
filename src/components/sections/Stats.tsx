@@ -3,30 +3,16 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  {
-    id: "experience",
-    label: "Years Experience",
-    value: "4+",
-  },
-  {
-    id: "projects",
-    label: "Projects Completed",
-    value: "4+",
-  },
-  {
-    id: "clients",
-    label: "Clients",
-    value: "10+",
-  },
+  { id: "experience", label: "Years Experience", value: "4+" },
+  { id: "projects", label: "Projects Completed", value: "4+" },
+  { id: "clients", label: "Clients", value: "10+" },
 ];
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    },
+    transition: { staggerChildren: 0.12 },
   },
 };
 
@@ -37,24 +23,24 @@ const itemVariants = {
 
 export function Stats() {
   return (
-    <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 md:pb-20 lg:px-8">
+    <section className="mx-auto max-w-[1800px] px-8 pb-20 md:px-20 md:pb-28">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
-        className="grid gap-6 rounded-3xl border border-border-subtle/70 bg-background-elevated/60 px-6 py-6 text-center shadow-[0_24px_80px_rgba(15,23,42,0.75)] backdrop-blur-md sm:grid-cols-3 sm:px-8 sm:py-7 md:gap-8"
+        className="grid gap-8 rounded-sm border-2 border-black/15 bg-white py-10 text-center dark:border-white/20 dark:bg-black sm:grid-cols-3 md:gap-12 md:py-14"
       >
         {stats.map((stat) => (
           <motion.div
             key={stat.id}
             variants={itemVariants}
-            className="space-y-1 sm:space-y-2"
+            className="space-y-2"
           >
-            <p className="bg-gradient-to-r from-brand-primary via-accent-soft to-brand-primary bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl">
+            <p className="text-4xl font-extrabold tracking-tight text-black dark:text-white sm:text-5xl">
               {stat.value}
             </p>
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-text-muted sm:text-xs">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/60 dark:text-white/60">
               {stat.label}
             </p>
           </motion.div>
@@ -63,4 +49,3 @@ export function Stats() {
     </section>
   );
 }
-

@@ -18,28 +18,27 @@ export function ProjectCard({ project }: ProjectCardProps) {
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.99 }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-background-elevated p-0 transition-colors hover:border-accent"
+      className="group flex flex-col overflow-hidden rounded-sm border-2 border-black/15 bg-white transition dark:border-white/20 dark:bg-black dark:hover:border-white"
     >
-      {/* Uniform 4:3 aspect ratio image area */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-border-subtle">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(99,102,241,0.35),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(79,70,229,0.4),transparent_55%)] opacity-90 transition duration-300 group-hover:opacity-100" />
+      <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-black/15 dark:border-white/20">
+        <div className="absolute inset-0 bg-black/5 dark:bg-white/5" />
       </div>
 
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
+      <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-base font-semibold text-text sm:text-lg">
+          <h3 className="text-lg font-bold text-black dark:text-white">
             {project.title}
           </h3>
-          <div className="flex shrink-0 items-center gap-1.5">
+          <div className="flex shrink-0 items-center gap-2">
             {hasLink && (
               <Link
                 href={project.href!}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded p-1 text-text-muted transition hover:text-accent"
+                className="rounded p-1.5 text-black/60 transition hover:bg-black hover:text-white dark:text-white/60 dark:hover:bg-white dark:hover:text-black"
                 aria-label="View live project"
               >
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-5 w-5" />
               </Link>
             )}
             {hasRepo && (
@@ -47,26 +46,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.repoHref!}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded p-1 text-text-muted transition hover:text-accent"
+                className="rounded p-1.5 text-black/60 transition hover:bg-black hover:text-white dark:text-white/60 dark:hover:bg-white dark:hover:text-black"
                 aria-label="View repository"
               >
-                <Github className="h-4 w-4" />
+                <Github className="h-5 w-5" />
               </Link>
             )}
           </div>
         </div>
 
-        <p className="mt-2 text-xs text-text-muted sm:text-sm">
+        <p className="mt-3 text-lg text-black/70 dark:text-white/70">
           {project.description}
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-1.5">
+        <div className="mt-4 flex flex-wrap gap-2">
           {project.techStack.slice(0, 6).map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center gap-1 rounded-full border border-border-subtle bg-background/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-text-muted transition group-hover:border-accent/50 group-hover:text-accent"
+              className="inline-flex items-center gap-1.5 rounded-sm border border-black/15 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-black/70 transition group-hover:border-black group-hover:text-black dark:border-white/20 dark:bg-black dark:text-white/70 dark:group-hover:border-white dark:group-hover:text-white"
             >
-              <Code2 className="h-3 w-3 shrink-0" aria-hidden />
+              <Code2 className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {tech}
             </span>
           ))}

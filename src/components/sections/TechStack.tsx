@@ -36,20 +36,18 @@ export function TechStack() {
   const items = useMemo(() => [...TECH, ...TECH], []);
 
   return (
-    <section className="mx-auto max-w-5xl px-4 pb-20 pt-4 sm:px-6 lg:px-8">
-      <div className="mb-5 flex items-end justify-between gap-4">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-text-muted">
-            Tech Stack
-          </p>
-          <h2 className="mt-1 text-lg font-semibold tracking-tight text-text sm:text-xl">
-            Tools I work with.
-          </h2>
-        </div>
+    <section className="mx-auto max-w-[1800px] px-8 pb-20 pt-8 md:px-20 md:pb-28">
+      <div className="mb-8">
+        <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
+          Tech Stack
+        </p>
+        <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+          Tools I work with.
+        </h2>
       </div>
 
       <div
-        className="relative overflow-hidden rounded-2xl border border-border-subtle/70 bg-background-elevated/60 py-3 backdrop-blur-md"
+        className="relative overflow-hidden rounded-sm border-2 border-black/15 bg-white py-4 dark:border-white/20 dark:bg-black"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
@@ -57,13 +55,13 @@ export function TechStack() {
             "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
         }}
       >
-        <div className="inline-flex min-w-full animate-marquee items-center gap-4 px-4 sm:gap-6 sm:px-6">
+        <div className="inline-flex min-w-full animate-marquee items-center gap-6 px-8 sm:gap-8 sm:px-10">
           {items.map((item, index) => {
             const { name, Icon, color } = item;
             return (
               <span
                 key={`${name}-${index}`}
-                className="group flex items-center gap-2 whitespace-nowrap rounded-full border border-border-subtle/70 bg-background-elevated/80 px-4 py-2 text-xs font-medium text-text-muted transition-colors hover:border-border-subtle sm:text-sm"
+                className="group flex items-center gap-3 whitespace-nowrap rounded-sm border-2 border-black/15 bg-white px-5 py-2.5 text-base font-semibold text-black/70 transition dark:border-white/20 dark:bg-black dark:text-white/70"
                 style={{ ["--hover-color" as string]: color }}
               >
                 <Icon

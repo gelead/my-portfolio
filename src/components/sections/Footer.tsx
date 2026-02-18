@@ -18,30 +18,28 @@ export function Footer() {
 
   return (
     <footer className="mt-auto bg-[var(--footer-background)]">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Column 1: Brand */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-text">
+      <div className="mx-auto max-w-[1800px] px-8 py-16 md:px-20">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-4">
+            <h3 className="text-sm font-extrabold uppercase tracking-wider text-black dark:text-white">
               GELEAD WORKU
             </h3>
-            <p className="max-w-xs text-xs leading-relaxed text-text-muted">
+            <p className="max-w-xs text-lg leading-relaxed text-black/70 dark:text-white/70">
               Crafting digital experiences with precision and creativity.
               Transforming ideas into elegant solutions.
             </p>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text">
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
               Quick Links
             </h3>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-3">
               {QUICK_LINKS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-xs text-text-muted transition hover:text-accent"
+                    className="text-lg text-black/70 transition hover:text-black dark:text-white/70 dark:hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -50,43 +48,41 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Get in Touch */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text">
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
               Get in Touch
             </h3>
-            <ul className="flex flex-col gap-2.5 text-xs text-text-muted">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-accent/80" aria-hidden />
+            <ul className="flex flex-col gap-3 text-lg text-black/70 dark:text-white/70">
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 shrink-0 text-black dark:text-white" aria-hidden />
                 <a
                   href="mailto:geleadw@gmail.com"
-                  className="transition hover:text-accent"
+                  className="transition hover:text-black dark:hover:text-white"
                 >
                   geleadw@gmail.com
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-accent/80" aria-hidden />
+              <li className="flex items-center gap-3">
+                <MapPin className="h-5 w-5 shrink-0 text-black dark:text-white" aria-hidden />
                 <span>Addis Ababa, Ethiopia</span>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Connect */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text">
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
               Connect
             </h3>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {github && (
                 <a
                   href={github.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full p-2 text-text-muted transition hover:bg-background-elevated hover:text-accent"
+                  className="rounded-sm border-2 border-black/15 bg-white p-2.5 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                   aria-label={github.label}
                 >
-                  <Github className="h-5 w-5" />
+                  <Github className="h-6 w-6" />
                 </a>
               )}
               {linkedin && (
@@ -94,39 +90,40 @@ export function Footer() {
                   href={linkedin.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full p-2 text-text-muted transition hover:bg-background-elevated hover:text-accent"
+                  className="rounded-sm border-2 border-black/15 bg-white p-2.5 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                   aria-label={linkedin.label}
                 >
-                  <Linkedin className="h-5 w-5" />
+                  <Linkedin className="h-6 w-6" />
                 </a>
               )}
               <a
                 href={telegramHref}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full p-2 text-text-muted transition hover:bg-background-elevated hover:text-accent"
+                className="rounded-sm border-2 border-black/15 bg-white p-2.5 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                 aria-label="Telegram"
               >
-                <Send className="h-5 w-5" />
+                <Send className="h-6 w-6" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-10 border-t border-border-subtle pt-6">
-          <div className="flex flex-col items-center justify-between gap-3 text-center text-xs text-text-muted sm:flex-row sm:text-left">
-            <span>© 2026 Gelead Worku. All rights reserved.</span>
-            <div className="flex items-center gap-4">
+        <div className="mt-14 border-t-2 border-black/15 pt-8 dark:border-white/20">
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-lg sm:flex-row sm:text-left">
+            <span className="text-black/70 dark:text-white/70">
+              © 2026 Gelead Worku. All rights reserved.
+            </span>
+            <div className="flex items-center gap-6">
               <Link
                 href="/privacy"
-                className="transition hover:text-accent"
+                className="font-semibold text-black transition hover:opacity-80 dark:text-white"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="transition hover:text-accent"
+                className="font-semibold text-black transition hover:opacity-80 dark:text-white"
               >
                 Terms of Service
               </Link>

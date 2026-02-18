@@ -9,20 +9,18 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="mx-auto max-w-5xl px-4 pb-16 pt-4 sm:px-6 md:pb-20 lg:px-8"
+      className="mx-auto max-w-[1800px] px-8 pb-20 pt-8 md:px-20 md:pb-28"
     >
-      <div className="mb-8 flex items-end justify-between gap-4">
-        <div>
-          <h2 className="text-lg font-semibold tracking-tight text-text sm:text-xl">
-            Projects
-          </h2>
-          <p className="mt-1 text-xs text-text-muted sm:text-sm">
-            A selection of work spanning product, UI, and full‑stack builds.
-          </p>
-        </div>
+      <div className="mb-10">
+        <h2 className="text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+          Projects
+        </h2>
+        <p className="mt-2 text-lg text-black/70 dark:text-white/70">
+          A selection of work spanning product, UI, and full‑stack builds.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { SOCIAL_LINKS } from "@/constants";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navItems = [
   { href: "#projects", label: "Projects" },
@@ -25,67 +26,71 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle/60 bg-background/70 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="relative flex items-center gap-2">
-          <span className="text-sm font-medium uppercase tracking-[0.2em] text-text-muted">
-            Gelead
-          </span>
+    <header className="sticky top-0 z-50 border-b border-black/15 bg-white/90 backdrop-blur-md dark:border-white/20 dark:bg-black/90">
+      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-8 py-4 md:px-20">
+        <Link
+          href="/"
+          className="text-sm font-bold uppercase tracking-[0.2em] text-black dark:text-white"
+        >
+          Gelead
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm font-medium text-text md:flex">
-          <div className="flex items-center gap-6">
+        <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
+          <div className="flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors hover:text-accent"
+                className="text-black transition hover:opacity-70 dark:text-white dark:hover:opacity-70"
               >
                 {item.label}
               </Link>
             ))}
           </div>
-          <div className="flex items-center gap-3 text-xs font-medium text-text-muted">
+          <div className="flex items-center gap-3">
             {primarySocial.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-border-subtle/70 bg-background-elevated/70 px-3 py-1 transition hover:border-accent-soft hover:text-accent"
+                className="rounded-md border border-black/15 bg-white px-3 py-1.5 text-xs font-medium text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
               >
                 {link.label}
               </a>
             ))}
+            <ThemeToggle />
           </div>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-full border border-border-subtle/60 bg-background-elevated/70 px-3 py-1.5 text-xs font-medium text-text shadow-sm transition hover:border-accent-soft hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
-          onClick={() => setIsOpen((open) => !open)}
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-        >
-          <span className="mr-2">Menu</span>
-          <span className="relative flex h-3 w-3 items-center justify-center">
-            <span
-              className={`absolute h-[1.5px] w-3 bg-current transition-transform duration-200 ${
-                isOpen ? "translate-y-0 rotate-45" : "-translate-y-1"
-              }`}
-            />
-            <span
-              className={`absolute h-[1.5px] w-3 bg-current transition-transform duration-200 ${
-                isOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute h-[1.5px] w-3 bg-current transition-transform duration-200 ${
-                isOpen ? "translate-y-0 -rotate-45" : "translate-y-1"
-              }`}
-            />
-          </span>
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/15 bg-white text-black dark:border-white/20 dark:bg-black dark:text-white"
+            onClick={() => setIsOpen((open) => !open)}
+            aria-expanded={isOpen}
+            aria-label="Toggle navigation"
+          >
+            <span className="relative flex h-4 w-4 flex-col justify-center gap-0.5">
+              <span
+                className={`absolute h-0.5 w-4 bg-current transition ${
+                  isOpen ? "translate-y-0 rotate-45" : "-translate-y-1.5"
+                }`}
+              />
+              <span
+                className={`h-0.5 w-4 bg-current transition ${
+                  isOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute h-0.5 w-4 bg-current transition ${
+                  isOpen ? "translate-y-0 -rotate-45" : "translate-y-1.5"
+                }`}
+              />
+            </span>
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -95,26 +100,26 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="border-b border-border-subtle/60 bg-background/95 backdrop-blur-md md:hidden"
+            className="border-b border-black/15 bg-white dark:border-white/20 dark:bg-black md:hidden"
           >
-            <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 pb-4 pt-1.5 text-sm font-medium text-text sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-[1800px] flex flex-col gap-1 px-8 py-4 md:px-20">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-md px-2 py-2 transition-colors hover:bg-background-elevated/70 hover:text-accent"
+                  className="rounded-md px-2 py-3 font-medium text-black transition hover:bg-black/10 hover:text-black dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="mt-2 flex flex-wrap gap-2 text-xs font-medium text-text-muted">
+              <div className="mt-2 flex flex-wrap gap-2">
                 {primarySocial.map((link) => (
                   <a
                     key={link.id}
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-full border border-border-subtle/70 bg-background/70 px-3 py-1 transition hover:border-accent-soft hover:text-accent"
+                    className="rounded-md border border-black/15 bg-white px-3 py-1.5 text-xs font-medium text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                   >
                     {link.label}
                   </a>
@@ -127,4 +132,3 @@ export function Navbar() {
     </header>
   );
 }
-

@@ -6,7 +6,6 @@ const QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/#blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -17,8 +16,8 @@ export function Footer() {
   const linkedin = SOCIAL_LINKS.find((l) => l.id === "linkedin");
 
   return (
-    <footer className="mt-auto border-t-2 border-black bg-[var(--footer-background)] dark:border-white">
-      <div className="mx-auto max-w-[1800px] px-8 py-20 md:px-20 md:py-24">
+    <footer className="mt-auto border-black bg-[var(--footer-background)] dark:border-white">
+      <div className="mx-auto max-w-[1800px] px-8 py-10 md:px-20 md:py-12 md:pt-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <h3 className="text-2xl font-extrabold uppercase tracking-wider text-black dark:text-white">
@@ -109,8 +108,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 border-t-2 border-black pt-8 dark:border-white">
-          <div className="flex flex-col items-center justify-between gap-4 text-center text-lg sm:flex-row sm:text-left">
+        <div className="mt-12 border-black pt-4 dark:border-white">
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-sm sm:flex-row sm:text-left">
             <span className="text-black/70 dark:text-white/70">
               © 2026 Gelead Worku. All rights reserved.
             </span>

@@ -8,6 +8,7 @@ import { SOCIAL_LINKS } from "@/constants";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navItems = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
@@ -37,15 +38,24 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <div className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-black transition hover:opacity-70 dark:text-white dark:hover:opacity-70"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(item.href));
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`transition hover:opacity-70 ${
+                    isActive
+                      ? "font-extrabold underline underline-offset-4"
+                      : "font-semibold"
+                  } text-black dark:text-white`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
           <div className="flex items-center gap-3">
             {primarySocial.map((link) => (
@@ -103,15 +113,24 @@ export function Navbar() {
             className="border-b border-black/15 bg-white dark:border-white/20 dark:bg-black md:hidden"
           >
             <div className="mx-auto max-w-[1800px] flex flex-col gap-1 px-8 py-4 md:px-20">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-md px-2 py-3 font-medium text-black transition hover:bg-black/10 hover:text-black dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive =
+                  pathname === item.href ||
+                  (item.href !== "/" && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`rounded-md px-2 py-3 transition hover:bg-black/10 hover:text-black dark:hover:bg-white/10 dark:hover:text-white ${
+                      isActive
+                        ? "font-extrabold underline underline-offset-4 text-black dark:text-white"
+                        : "font-medium text-black dark:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
               <div className="mt-2 flex flex-wrap gap-2">
                 {primarySocial.map((link) => (
                   <a

@@ -1,10 +1,8 @@
-import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 
-export default function Home() {
+export default function ProjectsPage() {
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
-      <Hero />
       <Projects />
     </div>
   );

@@ -4,10 +4,10 @@ import { SOCIAL_LINKS } from "@/constants";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Projects", href: "/#projects" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/#blog" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const telegramHref = "https://t.me/gelead";
@@ -17,11 +17,11 @@ export function Footer() {
   const linkedin = SOCIAL_LINKS.find((l) => l.id === "linkedin");
 
   return (
-    <footer className="mt-auto bg-[var(--footer-background)]">
-      <div className="mx-auto max-w-[1800px] px-8 py-16 md:px-20">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="mt-auto border-t-2 border-black bg-[var(--footer-background)] dark:border-white">
+      <div className="mx-auto max-w-[1800px] px-8 py-20 md:px-20 md:py-24">
+        <div className="grid gap-20 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-sm font-extrabold uppercase tracking-wider text-black dark:text-white">
+            <h3 className="text-3xl font-extrabold uppercase tracking-wider text-black dark:text-white sm:text-4xl">
               GELEAD WORKU
             </h3>
             <p className="max-w-xs text-lg leading-relaxed text-black/70 dark:text-white/70">
@@ -79,10 +79,10 @@ export function Footer() {
                   href={github.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-sm border-2 border-black/15 bg-white p-2.5 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                  className="rounded-sm border-2 border-black/15 bg-white p-4 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                   aria-label={github.label}
                 >
-                  <Github className="h-6 w-6" />
+                  <Github className="h-8 w-8" />
                 </a>
               )}
               {linkedin && (
@@ -90,26 +90,26 @@ export function Footer() {
                   href={linkedin.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-sm border-2 border-black/15 bg-white p-2.5 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                  className="rounded-sm border-2 border-black/15 bg-white p-4 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                   aria-label={linkedin.label}
                 >
-                  <Linkedin className="h-6 w-6" />
+                  <Linkedin className="h-8 w-8" />
                 </a>
               )}
               <a
                 href={telegramHref}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-sm border-2 border-black/15 bg-white p-2.5 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                className="rounded-sm border-2 border-black/15 bg-white p-4 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
                 aria-label="Telegram"
               >
-                <Send className="h-6 w-6" />
+                <Send className="h-8 w-8" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-14 border-t-2 border-black/15 pt-8 dark:border-white/20">
+        <div className="mt-16 border-t-2 border-black pt-8 dark:border-white">
           <div className="flex flex-col items-center justify-between gap-4 text-center text-lg sm:flex-row sm:text-left">
             <span className="text-black/70 dark:text-white/70">
               © 2026 Gelead Worku. All rights reserved.

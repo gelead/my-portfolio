@@ -7,10 +7,7 @@ export function Projects() {
   if (!PROJECTS.length) return null;
 
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-[1800px] px-8 pb-20 pt-8 md:px-20 md:pb-28"
-    >
+    <section className="mx-auto max-w-[1800px] px-8 pb-20 pt-24 md:px-20 md:pb-28 md:pt-32">
       <div className="mb-10">
         <h2 className="text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
           Projects

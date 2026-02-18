@@ -19,9 +19,9 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t-2 border-black bg-[var(--footer-background)] dark:border-white">
       <div className="mx-auto max-w-[1800px] px-8 py-20 md:px-20 md:py-24">
-        <div className="grid gap-20 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-3xl font-extrabold uppercase tracking-wider text-black dark:text-white sm:text-4xl">
+            <h3 className="text-2xl font-extrabold uppercase tracking-wider text-black dark:text-white">
               GELEAD WORKU
             </h3>
             <p className="max-w-xs text-lg leading-relaxed text-black/70 dark:text-white/70">
@@ -79,10 +79,10 @@ export function Footer() {
                   href={github.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-sm border-2 border-black/15 bg-white p-4 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                  className="group rounded-sm border-2 border-black/15 bg-white p-3 text-black transition hover:border-black hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-black"
                   aria-label={github.label}
                 >
-                  <Github className="h-8 w-8" />
+                  <Github className="h-6 w-6" />
                 </a>
               )}
               {linkedin && (
@@ -90,20 +90,20 @@ export function Footer() {
                   href={linkedin.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-sm border-2 border-black/15 bg-white p-4 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                  className="group rounded-sm border-2 border-black/15 bg-white p-3 text-black transition hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:border-[#0077B5] dark:hover:bg-[#0077B5] dark:hover:text-white"
                   aria-label={linkedin.label}
                 >
-                  <Linkedin className="h-8 w-8" />
+                  <Linkedin className="h-6 w-6" />
                 </a>
               )}
               <a
                 href={telegramHref}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-sm border-2 border-black/15 bg-white p-4 text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                className="group rounded-sm border-2 border-black/15 bg-white p-3 text-black transition hover:border-[#0088cc] hover:bg-[#0088cc] hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:border-[#0088cc] dark:hover:bg-[#0088cc] dark:hover:text-white"
                 aria-label="Telegram"
               >
-                <Send className="h-8 w-8" />
+                <Send className="h-6 w-6" />
               </a>
             </div>
           </div>

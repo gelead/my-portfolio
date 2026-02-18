@@ -8,7 +8,6 @@ import { Footer } from "@/components/sections/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: "400 800",
 });
 
 const geistMono = Geist_Mono({

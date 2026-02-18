@@ -6,8 +6,6 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 export function Projects() {
   if (!PROJECTS.length) return null;
 
-  const [first, ...rest] = PROJECTS;
-
   return (
     <section
       id="projects"
@@ -24,15 +22,11 @@ export function Projects() {
         </div>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-3 md:auto-rows-[minmax(210px,auto)]">
-        <div className="md:col-span-2">
-          <ProjectCard project={first} featured />
-        </div>
-        {rest.map((project) => (
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {PROJECTS.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
     </section>
   );
 }
-

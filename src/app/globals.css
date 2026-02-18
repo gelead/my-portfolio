@@ -21,6 +21,9 @@
 
   /* Borders & subtle chrome */
   --border-subtle: rgba(148, 163, 184, 0.35);
+
+  /* Footer (slightly darker for sectioning) */
+  --footer-background: #03060e;
 }
 
 @media (prefers-color-scheme: light) {
@@ -32,6 +35,7 @@
     --text-primary: #020617;
     --text-muted: #6b7280;
     --border-subtle: rgba(148, 163, 184, 0.3);
+    --footer-background: #0f172a;
   }
 }
 
@@ -44,6 +48,7 @@
   --color-text: var(--text-primary);
   --color-text-muted: var(--text-muted);
   --color-border-subtle: var(--border-subtle);
+  --color-footer-background: var(--footer-background);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

@@ -41,7 +41,7 @@ export function TechStack() {
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Tech Stack
         </p>
-        <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+        <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           Tools I work with.
         </h2>
       </div>
@@ -58,6 +58,9 @@ export function TechStack() {
         <div className="inline-flex min-w-full animate-marquee items-center gap-6 px-8 sm:gap-8 sm:px-10">
           {items.map((item, index) => {
             const { name, Icon, color } = item;
+            // Determine if this is a dark color that needs visibility enhancement in dark mode
+            const isDarkColor = color === "#2D3748" || color === "#339933"; // Prisma, Node.js
+            
             return (
               <span
                 key={`${name}-${index}`}
@@ -65,7 +68,10 @@ export function TechStack() {
                 style={{ ["--hover-color" as string]: color }}
               >
                 <Icon
-                  className="h-7 w-7 shrink-0 transition-colors group-hover:text-[var(--hover-color)] sm:h-8 sm:w-8"
+                  className={`h-7 w-7 shrink-0 transition-colors sm:h-8 sm:w-8 ${
+                    isDarkColor ? "dark:drop-shadow-[0_0_3px_rgba(255,255,255,0.4)]" : ""
+                  }`}
+                  style={{ color: color }}
                   aria-hidden
                 />
                 <span className="transition-colors group-hover:text-[var(--hover-color)]">

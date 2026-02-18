@@ -29,15 +29,15 @@ export function Stats() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
-        className="grid gap-8 rounded-sm border-2 border-black/15 bg-white py-10 text-center dark:border-white/20 dark:bg-black sm:grid-cols-3 md:gap-12 md:py-14"
+        className="grid gap-6 rounded-sm border-2 border-black/15 bg-white py-8 text-center dark:border-white/20 dark:bg-black sm:grid-cols-3 md:gap-8 md:py-10"
       >
         {stats.map((stat) => (
           <motion.div
             key={stat.id}
             variants={itemVariants}
-            className="space-y-2"
+            className="space-y-1"
           >
-            <p className="text-4xl font-extrabold tracking-tight text-black dark:text-white sm:text-5xl">
+            <p className="text-3xl font-extrabold tracking-tight text-black dark:text-white md:text-4xl">
               {stat.value}
             </p>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/60 dark:text-white/60">

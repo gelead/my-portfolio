@@ -39,10 +39,10 @@ export default function ContactPage() {
       {/* Full-width "Get in Touch" header */}
       <section className="border-b-2 border-black dark:border-white">
         <div className="mx-auto max-w-[1800px] px-8 py-20 md:px-20 md:py-28">
-          <h1 className="text-6xl font-extrabold tracking-tight text-black dark:text-white sm:text-7xl lg:text-8xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
             Get in Touch
           </h1>
-          <p className="mt-6 max-w-2xl text-xl leading-relaxed text-black/70 dark:text-white/70">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-black/70 dark:text-white/70 md:text-lg">
             Whether you&apos;re exploring a new project, looking for a
             full‑stack partner, or just want to say hi, I&apos;m always open to
             thoughtful conversations about design and engineering.
@@ -56,11 +56,11 @@ export default function ContactPage() {
           {/* Left: Contact details */}
           <div className="space-y-8">
             <div>
-              <h2 className="mb-4 text-2xl font-extrabold text-black dark:text-white sm:text-3xl">
+              <h2 className="mb-4 text-4xl font-extrabold text-black dark:text-white md:text-5xl">
                 Contact Details
               </h2>
               <ul className="space-y-4 text-lg text-black/70 dark:text-white/70">
-                <li className="flex items-center gap-4">
+                <li className="flex items-center gap-4 text-base md:text-lg">
                   <Mail className="h-6 w-6 shrink-0 text-black dark:text-white" />
                   <a
                     href="mailto:geleadw@gmail.com"
@@ -156,7 +156,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="inline-flex min-w-[180px] items-center justify-center rounded-sm bg-black px-10 py-4 text-base font-bold text-white transition hover:opacity-90 disabled:opacity-60 dark:bg-white dark:text-black dark:hover:opacity-90"
+                  className="inline-flex min-w-[160px] items-center justify-center rounded-sm bg-black px-6 py-3 text-base font-bold text-white transition hover:opacity-90 disabled:opacity-60 dark:bg-white dark:text-black dark:hover:opacity-90"
                 >
                   {status === "loading" ? "Sending..." : "Send Message"}
                 </button>

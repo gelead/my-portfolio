@@ -11,11 +11,11 @@ export function Experience() {
       id="experience"
       className="mx-auto max-w-[1800px] px-8 pb-20 pt-8 md:px-20 md:pb-28"
     >
-      <div className="mb-10">
-        <h2 className="text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+      <div className="mb-8">
+        <h2 className="text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           Experience
         </h2>
-        <p className="mt-2 text-lg text-black/70 dark:text-white/70">
+        <p className="mt-2 text-base text-black/70 dark:text-white/70 md:text-lg">
           Roles and teams where I&apos;ve shipped meaningful work.
         </p>
       </div>
@@ -42,13 +42,13 @@ export function Experience() {
                   <span className="h-2 w-2 rounded-full bg-black dark:bg-white" />
                 </div>
 
-                <div className="flex-1 rounded-sm border-2 border-black/15 bg-white p-6 dark:border-white/20 dark:bg-black sm:p-8">
+                <div className="flex-1 rounded-sm border-2 border-black/15 bg-white p-6 dark:border-white/20 dark:bg-black md:p-8">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <div>
-                      <h3 className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl">
+                      <h3 className="text-2xl font-extrabold tracking-tight text-black dark:text-white md:text-3xl">
                         {exp.company}
                       </h3>
-                      <p className="text-base font-medium text-black/70 dark:text-white/70">
+                      <p className="text-base font-medium text-black/70 dark:text-white/70 md:text-lg">
                         {exp.role}
                       </p>
                     </div>
@@ -57,7 +57,7 @@ export function Experience() {
                     </p>
                   </div>
 
-                  <ul className="mt-4 list-disc space-y-1 pl-5 text-lg text-black/70 dark:text-white/70">
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-base text-black/70 dark:text-white/70 md:text-lg">
                     <li>{exp.description}</li>
                   </ul>
 

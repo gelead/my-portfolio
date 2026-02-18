@@ -52,7 +52,7 @@ export function Process() {
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Process
         </p>
-        <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+        <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           How projects move from idea to launch.
         </h2>
       </div>
@@ -72,16 +72,16 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="relative overflow-hidden rounded-sm border-2 border-black/15 bg-white p-6 dark:border-white/20 dark:bg-black"
+              className="relative overflow-hidden rounded-sm border-2 border-black/15 bg-white p-6 dark:border-white/20 dark:bg-black md:p-8"
             >
-              <span className="pointer-events-none select-none text-5xl font-extrabold text-black/10 dark:text-white/10">
+              <span className="pointer-events-none select-none text-4xl font-extrabold text-black/10 dark:text-white/10">
                 {step.label}
               </span>
-              <div className="mt-6 space-y-2">
+              <div className="mt-4 space-y-2">
                 <h3 className="text-lg font-bold text-black dark:text-white">
                   {step.title}
                 </h3>
-                <p className="text-lg text-black/70 dark:text-white/70">
+                <p className="text-base text-black/70 dark:text-white/70 md:text-lg">
                   {step.description}
                 </p>
               </div>

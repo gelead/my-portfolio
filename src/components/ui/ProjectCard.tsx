@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="absolute inset-0 bg-black/5 dark:bg-white/5" />
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-6 md:p-8">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-lg font-bold text-black dark:text-white">
             {project.title}
@@ -55,7 +55,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
 
-        <p className="mt-3 text-lg text-black/70 dark:text-white/70">
+        <p className="mt-3 text-base text-black/70 dark:text-white/70 md:text-lg">
           {project.description}
         </p>
 

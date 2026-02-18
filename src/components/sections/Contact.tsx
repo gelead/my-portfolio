@@ -43,10 +43,10 @@ export function Contact() {
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
             Contact
           </p>
-          <h2 className="text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+          <h2 className="text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
             Let&apos;s connect.
           </h2>
-          <p className="max-w-md text-lg leading-relaxed text-black/70 dark:text-white/70">
+          <p className="max-w-md text-base leading-relaxed text-black/70 dark:text-white/70 md:text-lg">
             Whether you&apos;re exploring a new project, looking for a
             full‑stack partner, or just want to say hi, I&apos;m always open to
             thoughtful conversations about design and engineering.
@@ -123,7 +123,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="inline-flex min-w-[180px] items-center justify-center rounded-sm bg-black px-10 py-4 text-base font-bold text-white transition hover:opacity-90 disabled:opacity-60 dark:bg-white dark:text-black dark:hover:opacity-90"
+                className="inline-flex min-w-[160px] items-center justify-center rounded-sm bg-black px-6 py-3 text-base font-bold text-white transition hover:opacity-90 disabled:opacity-60 dark:bg-white dark:text-black dark:hover:opacity-90"
               >
                 {status === "loading" ? "Sending..." : "Send Message"}
               </button>

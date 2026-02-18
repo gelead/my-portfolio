@@ -50,7 +50,7 @@ export function Services() {
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Services
         </p>
-        <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-black dark:text-white sm:text-3xl">
+        <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
           How I can help.
         </h2>
       </div>
@@ -60,7 +60,7 @@ export function Services() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.35 }}
-        className="grid gap-6 md:grid-cols-3"
+        className="grid gap-5 md:grid-cols-3"
       >
         {services.map((service) => {
           const Icon = service.icon;
@@ -68,15 +68,15 @@ export function Services() {
             <motion.div
               key={service.id}
               variants={cardVariants}
-              className="group flex flex-col rounded-sm border-2 border-black/15 bg-white p-6 transition dark:border-white/20 dark:bg-black dark:hover:border-white"
+              className="group flex flex-col rounded-sm border-2 border-black/15 bg-white p-6 transition dark:border-white/20 dark:bg-black dark:hover:border-white md:p-8"
             >
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-sm border-2 border-black bg-black text-white dark:border-white dark:bg-white dark:text-black">
-                <Icon className="h-6 w-6" aria-hidden />
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-sm border-2 border-black bg-black text-white dark:border-white dark:bg-white dark:text-black">
+                <Icon className="h-5 w-5" aria-hidden />
               </div>
-              <h3 className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl">
+              <h3 className="text-xl font-bold tracking-tight text-black dark:text-white md:text-2xl">
                 {service.title}
               </h3>
-              <p className="mt-3 text-lg text-black/70 dark:text-white/70">
+              <p className="mt-2 text-base text-black/70 dark:text-white/70 md:text-lg">
                 {service.description}
               </p>
             </motion.div>

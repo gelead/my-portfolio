@@ -8,7 +8,7 @@ export function Projects() {
   if (!PROJECTS.length) return null;
 
   return (
-    <section className="mx-auto max-w-[1800px] px-8 md:px-20">
+    <section className="mx-auto max-w-[1800px] py-12 px-8 md:px-20">
       <motion.div
         className="mb-8"
         initial={{ opacity: 0, x: -24 }}

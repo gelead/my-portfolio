@@ -28,17 +28,20 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/15 bg-white/90 backdrop-blur-md dark:border-white/20 dark:bg-black/90">
-      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-8 py-4 md:px-20">
+    <header className="sticky top-0 z-50 border-b-2 border-black/10 bg-white dark:border-white/10 dark:bg-black">
+      <nav className="mx-auto flex max-w-[1800px] h-24 items-center justify-between px-8 md:px-20">
+        
+        {/* Logo - Matching the image reference */}
         <Link
           href="/"
-          className="text-[13px] font-semibold uppercase tracking-[0.28em] text-black dark:text-white"
+          className="text-[18px] font-black uppercase tracking-[0.4em] text-black dark:text-white"
         >
           Gelead
         </Link>
 
-        <div className="hidden items-center gap-8 text-[15px] font-bold tracking-tight md:flex">
-          <div className="flex items-center gap-8">
+        {/* Desktop Navigation - Large, Wide Spacing, No Dimming */}
+        <div className="hidden items-center gap-16 md:flex">
+          <div className="flex items-center gap-12">
             {navItems.map((item) => {
               const isActive =
                 pathname === item.href ||
@@ -47,35 +50,39 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`transition hover:opacity-70 ${
-                    isActive
-                      ? "font-extrabold underline underline-offset-4"
-                      : "font-bold"
-                  } text-black dark:text-white`}
+                  className={`relative text-[14px] font-bold uppercase tracking-[0.25em] transition-all duration-200 ${
+                    isActive 
+                      ? "text-black dark:text-white" 
+                      : "text-black dark:text-white hover:opacity-70"
+                  }`}
                 >
                   {item.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-underline"
+                      className="absolute -bottom-3 left-0 h-[2px] w-full bg-black dark:bg-white"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </Link>
               );
             })}
           </div>
-          <div className="flex items-center gap-3">
+
+          {/* Icons with industrial borders */}
+          <div className="flex items-center gap-4 border-l-2 border-black/10 pl-12 dark:border-white/10">
             {primarySocial.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className={`inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/15 bg-white text-black transition dark:border-white/20 dark:bg-black dark:text-white ${
-                  link.id === "linkedin"
-                    ? "hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white dark:hover:border-[#0077B5] dark:hover:bg-[#0077B5] dark:hover:text-white"
-                    : "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-                }`}
-                aria-label={link.label}
+                className="group flex h-10 w-10 items-center justify-center rounded-sm border-2 border-black dark:border-white transition-all hover:bg-black dark:hover:bg-white"
               >
                 {link.id === "github" ? (
-                  <Github className="h-5 w-5" aria-hidden />
+                  <Github className="h-5 w-5 transition-colors group-hover:text-white dark:text-white dark:group-hover:text-black" />
                 ) : (
-                  <Linkedin className="h-5 w-5" aria-hidden />
+                  <Linkedin className="h-5 w-5 transition-colors group-hover:text-white dark:text-white dark:group-hover:text-black" />
                 )}
               </a>
             ))}
@@ -83,86 +90,41 @@ export function Navbar() {
           </div>
         </div>
 
+        {/* Mobile Toggle */}
         <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
           <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/15 bg-white text-black dark:border-white/20 dark:bg-black dark:text-white"
-            onClick={() => setIsOpen((open) => !open)}
-            aria-expanded={isOpen}
-            aria-label="Toggle navigation"
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex h-11 w-11 items-center justify-center rounded-sm border-2 border-black bg-transparent text-black dark:border-white dark:text-white"
           >
-            <span className="relative flex h-4 w-4 flex-col justify-center gap-0.5">
-              <span
-                className={`absolute h-0.5 w-4 bg-current transition ${
-                  isOpen ? "translate-y-0 rotate-45" : "-translate-y-1.5"
-                }`}
-              />
-              <span
-                className={`h-0.5 w-4 bg-current transition ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-4 bg-current transition ${
-                  isOpen ? "translate-y-0 -rotate-45" : "translate-y-1.5"
-                }`}
-              />
-            </span>
+            <div className="flex flex-col gap-1.5">
+              <span className={`h-0.5 w-5 bg-current transition ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`h-0.5 w-5 bg-current transition ${isOpen ? "opacity-0" : ""}`} />
+              <span className={`h-0.5 w-5 bg-current transition ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </div>
           </button>
         </div>
       </nav>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="border-b border-black/15 bg-white dark:border-white/20 dark:bg-black md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="border-b-2 border-black bg-white dark:border-white dark:bg-black md:hidden overflow-hidden"
           >
-            <div className="mx-auto max-w-[1800px] flex flex-col gap-1 px-8 py-4 md:px-20">
-              {navItems.map((item) => {
-                const isActive =
-                  pathname === item.href ||
-                  (item.href !== "/" && pathname.startsWith(item.href));
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`rounded-md px-2 py-3 text-[15px] font-bold tracking-tight transition hover:bg-black/10 hover:text-black dark:hover:bg-white/10 dark:hover:text-white ${
-                      isActive
-                        ? "font-extrabold underline underline-offset-4 text-black dark:text-white"
-                        : "text-black dark:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-              <div className="mt-2 flex flex-wrap gap-2">
-                {primarySocial.map((link) => (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/15 bg-white text-black transition dark:border-white/20 dark:bg-black dark:text-white ${
-                      link.id === "linkedin"
-                        ? "hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white dark:hover:border-[#0077B5] dark:hover:bg-[#0077B5] dark:hover:text-white"
-                        : "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-                    }`}
-                    aria-label={link.label}
-                  >
-                    {link.id === "github" ? (
-                      <Github className="h-5 w-5" aria-hidden />
-                    ) : (
-                      <Linkedin className="h-5 w-5" aria-hidden />
-                    )}
-                  </a>
-                ))}
-              </div>
+            <div className="flex flex-col gap-8 px-8 py-12">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-3xl font-black uppercase tracking-[0.2em] text-black dark:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </motion.div>
         )}

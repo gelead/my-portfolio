@@ -1,133 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { History, Lightbulb, TrendingUp } from "lucide-react";
 
 const stats = [
   { id: "experience", label: "Years Experience", value: "4+" },
-  { id: "projects", label: "Projects Completed", value: "4+" },
-  { id: "clients", label: "Clients", value: "10+" },
+  { id: "projects", label: "Projects Completed", value: "10+" },
+  { id: "technologies", label: "Technologies", value: "15+" },
+];
+
+const pillars = [
+  {
+    title: "My Journey",
+    icon: History,
+    text: "From my first 'Hello World' to architecting complex full-stack systems, my path has been defined by a relentless drive to understand how the digital world is built.",
+  },
+  {
+    title: "My Philosophy",
+    icon: Lightbulb,
+    text: "I believe software should be as beautiful on the inside as it is on the outside. Clean architecture and user-centric design are the non-negotiable foundations of my work.",
+  },
+  {
+    title: "The Growth",
+    icon: TrendingUp,
+    text: "The tech world evolves daily. I prioritize continuous learning, constantly refining my workflow with modern frameworks like Next.js and specialized backend tools.",
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white">
-      <section className="mx-auto max-w-[1800px] px-8 pb-16 pt-24 md:px-20 md:pt-32">
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
-            About
-          </p>
-          <h1 className="mt-4 text-6xl font-extrabold tracking-tight text-black dark:text-white sm:text-7xl lg:text-8xl">
-            My Story
-          </h1>
-        </motion.div>
-
-        <div className="grid gap-16 md:grid-cols-2 md:items-start">
-          <div className="space-y-16">
+    <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
+      <section className="mx-auto max-w-[1800px] px-8 py-20 md:px-20 md:py-28">
+        
+        {/* --- TOP SECTION: Story & Image --- */}
+        <div className="grid gap-16 lg:grid-cols-[1fr_0.8fr] items-start mb-24">
+          <div className="space-y-10">
             <motion.div
               initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-4"
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-                My Story
-              </h2>
-              <div className="space-y-4 text-lg leading-relaxed text-black/70 dark:text-white/70">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
+                About Me
+              </p>
+              <h1 className="mt-4 text-5xl font-extrabold tracking-tight md:text-6xl lg:text-7xl leading-[1.1]">
+                Crafting Digital <br /> 
+                <span className="text-blue-600">Experiences.</span>
+              </h1>
+              <div className="mt-8 space-y-6 text-lg text-black/70 dark:text-white/70 max-w-2xl">
                 <p>
-                  I&apos;m a full‑stack developer and UI designer passionate about
-                  crafting digital experiences that balance form and function. My
-                  journey began with curiosity about how things work, which led me
-                  to explore both the technical and creative sides of web
-                  development.
-                </p>
-                <p>
-                  Over the years, I&apos;ve worked across the stack—from designing
-                  interfaces to building scalable APIs—always with a focus on
-                  creating solutions that are both beautiful and maintainable.
+                  I'm a Full Stack Developer with 4+ years of professional experience, 
+                  specializing in building robust and scalable web applications. My 
+                  approach blends technical precision with a deep understanding of user behavior.
                 </p>
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-4"
-            >
-              <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-                Philosophy
-              </h2>
-              <div className="space-y-4 text-lg leading-relaxed text-black/70 dark:text-white/70">
-                <p>
-                  I believe great software comes from understanding both the user
-                  and the system. Every decision—from the color of a button to
-                  the architecture of a database—should serve a clear purpose.
-                </p>
-                <p>
-                  My approach combines thoughtful design with pragmatic engineering.
-                  I aim to build products that feel effortless to use and robust
-                  under the hood.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-4"
-            >
-              <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-                Journey
-              </h2>
-              <div className="space-y-4 text-lg leading-relaxed text-black/70 dark:text-white/70">
-                <p>
-                  Starting with frontend development, I quickly realized the
-                  importance of understanding the full stack. This led me to dive
-                  into backend systems, databases, and infrastructure.
-                </p>
-                <p>
-                  Today, I work across the entire development lifecycle—from
-                  initial concept and design to deployment and iteration. Each
-                  project teaches me something new, and I bring those lessons to
-                  the next challenge.
-                </p>
-              </div>
-            </motion.div>
+            {/* Stats: Structured Row */}
+            <div className="flex flex-wrap gap-8 md:gap-16 border-t-2 border-black/10 dark:border-white/10 pt-10">
+              {stats.map((stat) => (
+                <div key={stat.id} className="space-y-1">
+                  <p className="text-4xl font-extrabold tracking-tighter">{stat.value}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest opacity-50">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="sticky top-24">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="rounded-sm border-2 border-black/15 bg-white p-10 text-center dark:border-white/20 dark:bg-black"
-            >
-              <div className="grid gap-8">
-                {stats.map((stat) => (
-                  <div key={stat.id} className="space-y-2">
-                    <p className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/60 dark:text-white/60">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+          {/* Right Column: Styled Placeholder Container */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="aspect-[4/5] w-full rounded-sm border-2 border-black/15 bg-gray-50 dark:border-white/20 dark:bg-white/5 flex items-center justify-center"
+          >
+            <span className="text-xs font-bold uppercase tracking-[0.2em] opacity-20">Profile Image Holder</span>
+          </motion.div>
         </div>
+
+        {/* --- THREE COLUMN PILLARS: Matching Services Grid --- */}
+        <div className="grid gap-6 md:grid-cols-3">
+          {pillars.map((pillar, index) => {
+            const Icon = pillar.icon;
+            return (
+              <motion.div
+                key={pillar.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group p-8 rounded-sm border-2 border-black/15 bg-white dark:border-white/20 dark:bg-black hover:border-black dark:hover:border-white transition-colors"
+              >
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-sm border-2 border-black bg-black text-white dark:border-white dark:bg-white dark:text-black">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-extrabold tracking-tight mb-3">
+                  {pillar.title}
+                </h3>
+                <p className="text-base leading-relaxed text-black/70 dark:text-white/70">
+                  {pillar.text}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+
       </section>
     </div>
   );

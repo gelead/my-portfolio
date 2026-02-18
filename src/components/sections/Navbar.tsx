@@ -32,12 +32,12 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-8 py-4 md:px-20">
         <Link
           href="/"
-          className="text-sm font-bold uppercase tracking-[0.2em] text-black dark:text-white"
+          className="text-[13px] font-semibold uppercase tracking-[0.28em] text-black dark:text-white"
         >
           Gelead
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
+        <div className="hidden items-center gap-8 text-[15px] font-bold tracking-tight md:flex">
           <div className="flex items-center gap-8">
             {navItems.map((item) => {
               const isActive =
@@ -50,7 +50,7 @@ export function Navbar() {
                   className={`transition hover:opacity-70 ${
                     isActive
                       ? "font-extrabold underline underline-offset-4"
-                      : "font-semibold"
+                      : "font-bold"
                   } text-black dark:text-white`}
                 >
                   {item.label}
@@ -131,10 +131,10 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`rounded-md px-2 py-3 transition hover:bg-black/10 hover:text-black dark:hover:bg-white/10 dark:hover:text-white ${
+                    className={`rounded-md px-2 py-3 text-[15px] font-bold tracking-tight transition hover:bg-black/10 hover:text-black dark:hover:bg-white/10 dark:hover:text-white ${
                       isActive
                         ? "font-extrabold underline underline-offset-4 text-black dark:text-white"
-                        : "font-medium text-black dark:text-white"
+                        : "text-black dark:text-white"
                     }`}
                   >
                     {item.label}

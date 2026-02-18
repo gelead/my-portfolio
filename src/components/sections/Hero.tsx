@@ -20,12 +20,15 @@ export function Hero() {
           Portfolio
         </p>
         <motion.h1
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+          initial={{ opacity: 0, y: 28, filter: "blur(14px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-balance text-5xl font-extrabold tracking-tight text-black dark:text-white md:text-7xl"
         >
-          Hi, I&apos;m <span className="text-black dark:text-white">Gelead</span>
+          Hi, I&apos;m{" "}
+          <span className="bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent dark:from-white dark:via-neutral-200 dark:to-neutral-400">
+            Gelead
+          </span>
           .
         </motion.h1>
         <motion.p

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { SOCIAL_LINKS } from "@/constants";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Github, Linkedin } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -64,9 +65,18 @@ export function Navbar() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-md border border-black/15 bg-white px-3 py-1.5 text-xs font-medium text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                className={`inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/15 bg-white text-black transition dark:border-white/20 dark:bg-black dark:text-white ${
+                  link.id === "linkedin"
+                    ? "hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white dark:hover:border-[#0077B5] dark:hover:bg-[#0077B5] dark:hover:text-white"
+                    : "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                }`}
+                aria-label={link.label}
               >
-                {link.label}
+                {link.id === "github" ? (
+                  <Github className="h-5 w-5" aria-hidden />
+                ) : (
+                  <Linkedin className="h-5 w-5" aria-hidden />
+                )}
               </a>
             ))}
             <ThemeToggle />
@@ -138,9 +148,18 @@ export function Navbar() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-md border border-black/15 bg-white px-3 py-1.5 text-xs font-medium text-black transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black"
+                    className={`inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/15 bg-white text-black transition dark:border-white/20 dark:bg-black dark:text-white ${
+                      link.id === "linkedin"
+                        ? "hover:border-[#0077B5] hover:bg-[#0077B5] hover:text-white dark:hover:border-[#0077B5] dark:hover:bg-[#0077B5] dark:hover:text-white"
+                        : "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                    }`}
+                    aria-label={link.label}
                   >
-                    {link.label}
+                    {link.id === "github" ? (
+                      <Github className="h-5 w-5" aria-hidden />
+                    ) : (
+                      <Linkedin className="h-5 w-5" aria-hidden />
+                    )}
                   </a>
                 ))}
               </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import type { IconType } from "react-icons";
 import {
   SiReact,
@@ -16,6 +15,9 @@ import {
   SiDocker,
   SiPython,
 } from "react-icons/si";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const TECH: { name: string; Icon: IconType; color: string }[] = [
   { name: "React", Icon: SiReact, color: "#61DAFB" },
@@ -32,55 +34,80 @@ const TECH: { name: string; Icon: IconType; color: string }[] = [
   { name: "Python", Icon: SiPython, color: "#3776AB" },
 ];
 
+function hexToRgb(hex: string) {
+  const normalized = hex.replace("#", "");
+  if (normalized.length !== 6) return null;
+  const r = Number.parseInt(normalized.slice(0, 2), 16);
+  const g = Number.parseInt(normalized.slice(2, 4), 16);
+  const b = Number.parseInt(normalized.slice(4, 6), 16);
+  if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return null;
+  return { r, g, b };
+}
+
 export function TechStack() {
-  const items = useMemo(() => [...TECH, ...TECH], []);
+  const items = TECH;
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const isDark = mounted ? resolvedTheme === "dark" : false;
 
   return (
-    <section className="mx-auto max-w-[1800px] px-8 pb-20 pt-8 md:px-20 md:pb-28">
+    <section className="mx-auto max-w-[1800px] px-8 md:px-20">
       <div className="mb-8">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">
           Tech Stack
         </p>
         <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
-          Tools I work with.
+          Toolboxes.
         </h2>
+        <p className="mt-2 max-w-2xl text-base text-black/70 dark:text-white/70 md:text-lg">
+          A focused set of tools I use to design, build, ship, and scale modern
+          web products.
+        </p>
       </div>
 
-      <div
-        className="relative overflow-hidden rounded-sm border-2 border-black/15 bg-white py-4 dark:border-white/20 dark:bg-black"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
-        }}
-      >
-        <div className="inline-flex min-w-full animate-marquee items-center gap-6 px-8 sm:gap-8 sm:px-10">
-          {items.map((item, index) => {
-            const { name, Icon, color } = item;
-            // Determine if this is a dark color that needs visibility enhancement in dark mode
-            const isDarkColor = color === "#2D3748" || color === "#339933"; // Prisma, Node.js
-            
-            return (
-              <span
-                key={`${name}-${index}`}
-                className="group flex items-center gap-4 whitespace-nowrap rounded-sm border-2 border-black/15 bg-white px-8 py-4 text-xl font-bold text-black/70 transition dark:border-white/20 dark:bg-black dark:text-white/70 sm:text-2xl"
-                style={{ ["--hover-color" as string]: color }}
-              >
-                <Icon
-                  className={`h-7 w-7 shrink-0 transition-colors sm:h-8 sm:w-8 ${
-                    isDarkColor ? "dark:drop-shadow-[0_0_3px_rgba(255,255,255,0.4)]" : ""
-                  }`}
-                  style={{ color: color }}
-                  aria-hidden
-                />
-                <span className="transition-colors group-hover:text-[var(--hover-color)]">
-                  {name}
-                </span>
+      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6 lg:grid-cols-6">
+        {items.map((item) => {
+          const { name, Icon, color } = item;
+          const isMono = name === "Next.js" || name === "Vercel";
+          const effectiveColor = isMono ? (isDark ? "#ffffff" : "#000000") : color;
+          const rgb = hexToRgb(effectiveColor);
+
+          const hoverBg =
+            rgb ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.10)` : "transparent";
+          const hoverGlow = rgb
+            ? `0 18px 50px rgba(0,0,0,0.12), 0 0 28px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.28)`
+            : "0 18px 50px rgba(0,0,0,0.12)";
+
+          const isDarkBrand = effectiveColor.toLowerCase() === "#2d3748";
+
+          return (
+            <motion.div
+              key={name}
+              whileHover={{
+                y: -10,
+                backgroundColor: hoverBg,
+                boxShadow: hoverGlow,
+                borderColor: effectiveColor,
+              }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              className="flex min-h-[140px] flex-col items-center justify-center gap-3 rounded-sm border-2 border-black/15 bg-white px-4 py-6 text-center transition-colors dark:border-white/20 dark:bg-black"
+            >
+              <Icon
+                className={`h-10 w-10 ${
+                  isDarkBrand ? "dark:drop-shadow-[0_0_4px_rgba(255,255,255,0.45)]" : ""
+                }`}
+                style={{ color: effectiveColor }}
+                aria-hidden
+              />
+              <span className="text-sm font-semibold text-black/80 dark:text-white/80">
+                {name}
               </span>
-            );
-          })}
-        </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

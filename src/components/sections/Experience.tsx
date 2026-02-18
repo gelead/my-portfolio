@@ -9,7 +9,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="mx-auto max-w-[1800px] px-8 pb-20 pt-8 md:px-20 md:pb-28"
+      className="mx-auto max-w-[1800px] px-8 md:px-20"
     >
       <div className="mb-8">
         <h2 className="text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">

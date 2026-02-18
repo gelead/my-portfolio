@@ -23,7 +23,7 @@ const itemVariants = {
 
 export function Stats() {
   return (
-    <section className="mx-auto max-w-[1800px] px-8 pb-20 md:px-20 md:pb-28">
+    <section className="mx-auto max-w-[1800px] px-8 md:px-20">
       <motion.div
         variants={containerVariants}
         initial="hidden"

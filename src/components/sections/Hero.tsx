@@ -5,45 +5,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const TITLES = [
-  "Full Stack Developer & UI Designer",
-  "Full Stack Developer",
-  "UI Designer",
-];
-
-function useTypewriter(titles: string[], typingSpeed = 80, pause = 1400) {
-  const [index, setIndex] = React.useState(0);
-  const [displayed, setDisplayed] = React.useState("");
-
-  React.useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    const fullText = titles[index];
-
-    if (displayed.length < fullText.length) {
-      timeout = setTimeout(
-        () => setDisplayed(fullText.slice(0, displayed.length + 1)),
-        typingSpeed,
-      );
-    } else {
-      timeout = setTimeout(() => {
-        setDisplayed("");
-        setIndex((prev) => (prev + 1) % titles.length);
-      }, pause);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayed, index, titles, typingSpeed, pause]);
-
-  return displayed;
-}
-
 export function Hero() {
-  const typedTitle = useTypewriter(TITLES);
-
   return (
     <section
       id="hero"
-      className="mx-auto flex min-h-[80vh] max-w-[1800px] flex-col items-center gap-12 px-8 pb-16 pt-16 md:flex-row md:items-center md:justify-between md:px-20 md:pt-24"
+      className="mx-auto flex min-h-[70vh] max-w-[1800px] flex-col items-center gap-12 px-8 md:flex-row md:items-center md:justify-between md:px-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -58,13 +24,9 @@ export function Hero() {
           Hi, I&apos;m <span className="text-black dark:text-white">Gelead</span>
           .
         </h1>
-        <div className="min-h-[2rem] text-base font-medium text-black/70 dark:text-white/70 md:text-lg">
-          <span className="mr-1.5">Full Stack Developer &amp;</span>
-          <span className="font-bold text-black dark:text-white">
-            {typedTitle}
-            <span className="ml-1 inline-block h-5 w-[2px] animate-pulse bg-black align-middle dark:bg-white" />
-          </span>
-        </div>
+        <p className="text-base font-semibold text-black/70 dark:text-white/70 md:text-lg">
+          Full Stack Developer &amp; UI Designer
+        </p>
         <p className="max-w-xl text-base leading-relaxed text-black/70 dark:text-white/70 md:text-lg">
           I design and build thoughtful digital experiences with a focus on
           clean interfaces, performance, and maintainable full‑stack systems.

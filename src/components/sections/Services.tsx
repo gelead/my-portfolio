@@ -44,7 +44,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="mx-auto max-w-[1800px] px-8 pb-16 pt-8 md:px-20 md:pb-24"
+      className="mx-auto max-w-[1800px] px-8 md:px-20"
     >
       <div className="mb-10">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-black/60 dark:text-white/60">

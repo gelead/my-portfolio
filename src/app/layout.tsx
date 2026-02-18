@@ -27,16 +27,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    /* suppressHydrationWarning is required for next-themes to prevent console errors */
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`
+          ${geistSans.variable} 
+          ${geistMono.variable} 
+          font-sans antialiased 
+          /* The following classes enable the Theme Toggle to work globally */
+          bg-white text-black 
+          dark:bg-black dark:text-white 
+          /* Smooth color transition when toggling */
+          transition-colors duration-300
+        `}
       >
         <ThemeProvider>
+          {/* Navigation stays at the top */}
           <Navbar />
-          <div className="border-b border-black/10 bg-transparent px-0 md:px-0 dark:border-white/20">
-            <ScrollProgress />
-          </div>
-          <main>{children}</main>
+          
+          {/* Progress bar container */}
+          
+
+          {/* Main content area. 
+              Note: Ensure your page-level containers don't have hardcoded 'bg-black' 
+              or they will override this theme logic.
+          */}
+          <main className="min-h-screen">
+            {children}
+          </main>
+
           <Footer />
         </ThemeProvider>
       </body>

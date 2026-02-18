@@ -147,7 +147,7 @@ export function TechStack() {
   return (
     <section className="mx-auto max-w-[1800px] px-8 md:px-20">
       <motion.div
-        className="mb-8"
+        className="mb-8 py-4"
         initial={{ opacity: 0, x: -24 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -157,7 +157,7 @@ export function TechStack() {
           Tech Stack
         </p>
         <h2 className="mt-2 text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl">
-          Toolboxes.
+          Technologies mastered
         </h2>
         <p className="mt-2 max-w-2xl text-base text-black/70 dark:text-white/70 md:text-lg">
           A focused set of tools I use to design, build, ship, and scale modern

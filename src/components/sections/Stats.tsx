@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const stats = [
   { id: "experience", label: "Years Experience", value: "4+" },
-  { id: "projects", label: "Projects Completed", value: "4+" },
-  { id: "clients", label: "Clients", value: "10+" },
+  { id: "projects", label: "Projects Completed", value: "10+" },
+  { id: "clients", label: "Clients", value: "2+" },
 ];
 
 const containerVariants = {

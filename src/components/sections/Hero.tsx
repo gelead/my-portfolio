@@ -17,7 +17,7 @@ export function Hero() {
     >
       <motion.div className="flex-1 space-y-8 text-center md:text-left">
         <p className="text-xs font-bold uppercase tracking-[0.35em] text-black/60 dark:text-white/60">
-          Portfolio
+          Welcome to my world
         </p>
         <motion.h1
           initial={{ opacity: 0, y: 28, filter: "blur(14px)" }}
@@ -106,14 +106,15 @@ export function Hero() {
               ease: "easeInOut",
             }}
           />
-          <div className="absolute inset-0 bg-black/5 dark:bg-white/5" />
-          <Image
-            src="/next.svg"
-            alt="Abstract accent graphic"
-            fill
-            priority
-            className="object-contain p-8 opacity-80 dark:invert"
-          />
+          <div className="relative w-full h-full overflow-hidden">
+            <Image
+              src="/image.png"
+              alt="Descriptive text"
+              fill
+              priority
+              className="object-contain" 
+            />
+          </div>
         </div>
       </motion.div>
     </section>

@@ -1,4 +1,3 @@
-Full-Stack Developer & System Designer. Building secure, distributed, and AI-enhanced web applications. Focused on engineering for impact.
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 ## Getting Started
 
